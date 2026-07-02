@@ -70,8 +70,8 @@
   --color-on-secondary-container: var(--on-secondary-container);
   --color-secondary-fixed: var(--secondary-fixed);
   --color-outline-variant: var(--outline-variant);
-  --font-arabic-headline: "Cairo", "Tajawal", system-ui, sans-serif;
-  --font-arabic-body: "Tajawal", "Cairo", system-ui, sans-serif;
+  --font-arabic-headline: "Segoe UI", "Tahoma", "Arial", system-ui, sans-serif;
+  --font-arabic-body: "Segoe UI", "Tahoma", "Arial", system-ui, sans-serif;
   --spacing-xs: 0.5rem;
   --spacing-sm: 0.75rem;
   --spacing-md: 1.25rem;
@@ -179,4 +179,77 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+/* Scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Partners marquee */
+@keyframes marquee-rtl {
+  from { translate: -50% 0; }
+  to   { translate: 0 0; }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: translate;
+  animation: marquee-rtl 28s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Logo text */
+.logo-name {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #1a2456;
+  letter-spacing: 0.03em;
+}
+.logo-name-compact { font-size: 1rem; }
+.logo-sub {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #b8962e;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.logo-tagline {
+  font-size: 0.5rem;
+  color: #b8962e;
+  opacity: 0.8;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Header gold accent line */
+.header-gold-line {
+  background: linear-gradient(to left, transparent, #b8962e55, #b8962e, #b8962e55, transparent);
+}
+
+/* Hero background */
+.hero-bg {
+  background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBkgUR32H6cD4vmhJ5RWWYLeArF6sMDehc6BaGWnRyCpKyOKSqdUefOrby_l8s5eEtqPPFvKLKIKluIJmZSMQ6AX6mNXavPFnYBLm2sqpXtn8t0exrwSb1D27Zz3X_UX06VrzoS-7_WBDckiRE7Cw1ME2QW1JqaozfkaNCaaPkjM_zTEK6v0ocedfPAVPCfUAxFqZ_6idxlm0mwAwSSx2d_vro-ayysG-V-ct_FVGP0dszXynpCBi6wiwaOFu6Qib6s-ETg4m5eC3I');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Gold gradient text utility */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #c9a84c 0%, #f0d060 50%, #b8962e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

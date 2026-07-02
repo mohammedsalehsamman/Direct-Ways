@@ -1,45 +1,84 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  Plane, Building2, Globe, Car, FileText, Hotel,
+  ShieldCheck, HeadphonesIcon, Phone, Mail, Send,
+  Instagram, MapPin, Clock, ArrowLeft,
+} from "lucide-react";
+
 import Header from "../components/Header";
+import StatsSection from "../components/StatsSection";
+import DestinationsSection from "../components/DestinationsSection";
+import OffersSection from "../components/OffersSection";
+import TestimonialsSection from "../components/TestimonialsSection";
+import ContactForm from "../components/ContactForm";
+import { useScrollReveal } from "../hooks/use-scroll-reveal";
 
-export const Route = createFileRoute("/")({
-  component: Index,
-});
+export const Route = createFileRoute("/")({ component: Index });
 
-const HERO_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBkgUR32H6cD4vmhJ5RWWYLeArF6sMDehc6BaGWnRyCpKyOKSqdUefOrby_l8s5eEtqPPFvKLKIKluIJmZSMQ6AX6mNXavPFnYBLm2sqpXtn8t0exrwSb1D27Zz3X_UX06VrzoS-7_WBDckiRE7Cw1ME2QW1JqaozfkaNCaaPkjM_zTEK6v0ocedfPAVPCfUAxFqZ_6idxlm0mwAwSSx2d_vro-ayysG-V-ct_FVGP0dszXynpCBi6wiwaOFu6Qib6s-ETg4m5eC3I";
-const ABOUT_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuD3AGgRzA8IAMSYKHm4pjlx78k44gUemS-peJXJcBfG48afdTZhk_VlALo2L-RHoSKZkguYTJNv7ZPuV3VqnHZAUjXYhJA7MBKe9fVhrDzO63qkGF-YMZwcLz888EiZet1zlOdlG66N1Vyd4rG8W5rIfP54psvjC9mP6LKVFu4BVMVFHhtBWbnkIH4GuhIg9aI1oWpgVgIq6-BVbv_-X2lz8ZacG8BPb3a_h267PGU3XthoRqJqEBLBOTZtEF5DNCpJQhzN2P8lB8M";
-const MAP_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuCpawanVtFpHeaaZ27m6-l8bQ6KYbpUzsoSO4h9BoChhKQ97ip4hE37CfDvsYVEF0_jWlZZFLEH5766MosuMqHJxfZ9v7g7Hb98yXEI_sELJxRFEbhFpdzKrKwkfeHAl5dBrTwYoxBDyReper7RQA-nFUql1hLTSThyKqMG-EgbcaYF34XYVcToP3ML2qfocYaZ5Im5599UrkVnsNx6jnI7FU5aKnlbbgEjbSh7SvB9euU04yJrfVOgPNE8uGMWsDSaoc2MBhbUCVM";
+/* ─── Data ─── */
+const ABOUT_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuD3AGgRzA8IAMSYKHm4pjlx78k44gUemS-peJXJcBfG48afdTZhk_VlALo2L-RHoSKZkguYTJNv7ZPuV3VqnHZAUjXYhJA7MBKe9fVhrDzO63qkGF-YMZwcLz888EiZet1zlOdlG66N1Vyd4rG8W5rIfP54psvjC9mP6LKVFu4BVMVFHhtBWbnkIH4GuhIg9aI1oWpgVgIq6-BVbv_-X2lz8ZacG8BPb3a_h267PGU3XthoRqJqEBLBOTZtEF5DNCpJQhzN2P8lB8M";
 
 const services = [
-  { icon: "flight_takeoff", title: "حجوزات الطيران", desc: "تأمين أفضل الأسعار على الرحلات الدولية والمحلية مع كبرى شركات الطيران العالمية." },
-  { icon: "mosque", title: "برامج العمرة والحج", desc: "برامج إيمانية متكاملة تشمل السكن الفاخر والمواصلات لضمان راحتكم في البقاع المقدسة." },
-  { icon: "travel_explore", title: "الرحلات السياحية", desc: "جولات سياحية منظمة لأجمل الوجهات العالمية مع مرشدين متخصصين." },
-  { icon: "directions_car", title: "خدمات النقل", desc: "أسطول سيارات حديث وخدمات استقبال من المطار لتنقلات مريحة وآمنة." },
-  { icon: "description", title: "إصدار التأشيرات", desc: "تسهيل كافة الإجراءات القانونية لإصدار التأشيرات لمختلف دول العالم بسرعة واحترافية." },
-  { icon: "hotel", title: "حجوزات الفنادق", desc: "شراكات مع أرقى المنتجعات والفنادق العالمية لضمان أفضل إقامة بأقل تكلفة." },
+  { icon: Plane,     title: "حجوزات الطيران",      desc: "تأمين أفضل الأسعار على الرحلات الدولية والمحلية مع كبرى شركات الطيران العالمية." },
+  { icon: Building2, title: "برامج العمرة والحج",   desc: "برامج إيمانية متكاملة تشمل السكن الفاخر والمواصلات لضمان راحتكم في البقاع المقدسة." },
+  { icon: Globe,     title: "الرحلات السياحية",     desc: "جولات سياحية منظمة لأجمل الوجهات العالمية مع مرشدين متخصصين." },
+  { icon: Car,       title: "خدمات النقل",          desc: "أسطول سيارات حديث وخدمات استقبال من المطار لتنقلات مريحة وآمنة." },
+  { icon: FileText,  title: "إصدار التأشيرات",      desc: "تسهيل كافة الإجراءات القانونية لإصدار التأشيرات لمختلف دول العالم بسرعة واحترافية." },
+  { icon: Hotel,     title: "حجوزات الفنادق",       desc: "شراكات مع أرقى المنتجعات والفنادق العالمية لضمان أفضل إقامة بأقل تكلفة." },
 ];
 
-function Icon({ name, className }: { name: string; className?: string }) {
-  return <span className={`material-symbols-outlined ${className ?? ""}`}>{name}</span>;
+const contactLinks = [
+  { href: "https://wa.me/971507046772",               Icon: Phone,     label: "واتساب (الإمارات)", val: "+971 50 704 6772" },
+  { href: "mailto:info@directwaystravel.com",         Icon: Mail,      label: "البريد الإلكتروني", val: "info@directwaystravel.com" },
+  { href: "https://www.instagram.com/directwaystravel", Icon: Instagram, label: "إنستغرام",         val: "@directwaystravel" },
+  { href: "https://t.me/directwaystravel",            Icon: Send,      label: "تيليغرام",          val: "@directwaystravel" },
+];
+
+const partners = [
+  "طيران الإمارات", "الاتحاد للطيران", "فلاي دبي",
+  "العربية للطيران", "الخطوط السعودية", "طيران الخليج",
+  "ماليزيا إيرلاينز", "تركيش إيرلاينز",
+];
+
+const footerLinks = [
+  { label: "الرئيسية",   href: "#home" },
+  { label: "من نحن",     href: "#about" },
+  { label: "خدماتنا",   href: "#services" },
+  { label: "العروض",     href: "#offers" },
+  { label: "اتصل بنا",  href: "#contact" },
+];
+
+/* ─── Components ─── */
+function ScrollSection({ children, className }: { children: React.ReactNode; className?: string }) {
+  const ref = useScrollReveal<HTMLDivElement>();
+  return <div ref={ref} className={className}>{children}</div>;
 }
 
 function Index() {
+  const handleScroll = (href: string) => {
+    const id = href.replace("#", "");
+    if (id === "home") { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <div className="font-arabic-body">
       <Header />
-      {/* Hero */}
-      <section id="home" className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden pt-20">
+
+      {/* ── Hero ── */}
+      <section
+        id="home"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      >
         <div className="absolute inset-0 z-0">
-          <div
-            className="bg-cover bg-center w-full h-full scale-105"
-            style={{ backgroundImage: `url('${HERO_IMG}')` }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/30 to-transparent" />
+          <div className="hero-bg w-full h-full scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/35 to-transparent" />
         </div>
         <div className="relative z-10 text-center px-md max-w-4xl mx-auto">
-          <h1 className="font-arabic-headline font-black text-display-lg-mobile md:text-display-lg text-white drop-shadow-lg mb-md leading-tight">
+          <p className="text-secondary font-bold tracking-widest text-sm uppercase mb-4">
+            دايركت وايز للسفر والسياحة
+          </p>
+          <h1 className="font-black text-display-lg-mobile md:text-display-lg text-white drop-shadow-lg mb-md leading-tight">
             رحلتك تبدأ معنا: اكتشف العالم مع دايركت وايز
           </h1>
           <p className="text-body-lg text-white/90 mb-lg max-w-2xl mx-auto leading-loose">
@@ -48,39 +87,49 @@ function Index() {
           <div className="flex flex-col sm:flex-row-reverse justify-center gap-md">
             <a
               href="#services"
+              onClick={(e) => { e.preventDefault(); handleScroll("#services"); }}
               className="inline-flex items-center justify-center gap-sm bg-secondary text-on-secondary-container font-bold px-lg py-sm hover:bg-secondary/90 transition-colors"
             >
               اكتشف خدماتنا
-              <Icon name="arrow_back" />
+              <ArrowLeft className="w-4 h-4" />
             </a>
             <a
               href="#contact"
+              onClick={(e) => { e.preventDefault(); handleScroll("#contact"); }}
               className="inline-flex items-center justify-center gap-sm border border-white/60 text-white font-bold px-lg py-sm hover:bg-white/10 transition-colors"
             >
               تواصل معنا
             </a>
           </div>
         </div>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50">
+          <span className="text-xs tracking-widest uppercase">مرر للأسفل</span>
+          <div className="w-px h-10 bg-gradient-to-b from-white/40 to-transparent" />
+        </div>
       </section>
 
-      {/* About */}
+      {/* ── Stats ── */}
+      <StatsSection />
+
+      {/* ── About ── */}
       <section id="about" className="py-xl bg-white">
         <div className="max-w-container-max mx-auto px-md">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
-            <div className="order-2 lg:order-1 mb-md">
+            <ScrollSection className="order-2 lg:order-1 mb-md reveal">
               <div className="relative">
                 <div className="aspect-square bg-surface-container-high overflow-hidden shadow-2xl border-8 border-white">
-                  <img className="w-full h-full object-cover" src={ABOUT_IMG} alt="فريق دايركت وايز" />
+                  <img className="w-full h-full object-cover" src={ABOUT_IMG} alt="فريق دايركت وايز" loading="lazy" />
                 </div>
                 <div className="absolute -bottom-10 -right-10 bg-secondary-container p-lg shadow-xl hidden md:block">
-                  <span className="block font-arabic-headline font-black text-primary text-headline-md">+15</span>
+                  <span className="block font-black text-headline-md text-primary">+15</span>
                   <span className="text-label-md text-primary font-bold">عاماً من الخبرة</span>
                 </div>
               </div>
-            </div>
-            <div className="order-1 lg:order-2 space-y-md">
-              <span className="text-secondary font-arabic-headline font-bold tracking-widest block mb-xs">من نحن؟</span>
-              <h2 className="font-arabic-headline font-bold text-headline-md text-primary">رواد السياحة في الخليج العربي</h2>
+            </ScrollSection>
+            <ScrollSection className="order-1 lg:order-2 space-y-md reveal reveal-delay-2">
+              <span className="text-secondary font-bold tracking-widest block mb-xs">من نحن؟</span>
+              <h2 className="font-bold text-headline-md text-primary">رواد السياحة في الخليج العربي</h2>
               <p className="text-body-lg text-on-surface-variant leading-loose">
                 تتميز دايركت وايز بخبرة واسعة في تنظيم الرحلات السياحية المتكاملة. ننتشر عبر فروعنا في دولة الإمارات العربية المتحدة (دبي) والمملكة العربية السعودية (الرياض)، لنكون الأقرب لعملائنا في كل وقت.
               </p>
@@ -89,34 +138,37 @@ function Index() {
               </p>
               <div className="flex flex-wrap gap-lg pt-md border-t border-outline-variant">
                 <div className="flex items-center gap-sm">
-                  <Icon name="verified_user" className="text-secondary !text-4xl" />
-                  <span className="font-arabic-headline text-label-md text-primary font-bold">موثوقية تامة</span>
+                  <ShieldCheck className="w-9 h-9 text-secondary" strokeWidth={1.5} />
+                  <span className="text-label-md text-primary font-bold">موثوقية تامة</span>
                 </div>
                 <div className="flex items-center gap-sm">
-                  <Icon name="support_agent" className="text-secondary !text-4xl" />
-                  <span className="font-arabic-headline text-label-md text-primary font-bold">دعم 24/7</span>
+                  <HeadphonesIcon className="w-9 h-9 text-secondary" strokeWidth={1.5} />
+                  <span className="text-label-md text-primary font-bold">دعم 24/7</span>
                 </div>
               </div>
-            </div>
+            </ScrollSection>
           </div>
         </div>
       </section>
 
-      {/* Services */}
+      {/* ── Destinations ── */}
+      <DestinationsSection />
+
+      {/* ── Services ── */}
       <section id="services" className="py-xl bg-surface-container-low">
         <div className="max-w-container-max mx-auto px-md">
-          <div className="text-center mb-xl">
-            <span className="text-secondary font-arabic-headline font-bold block mb-xs">خدماتنا</span>
-            <h2 className="font-arabic-headline font-bold text-headline-md text-primary">حلول سفر متكاملة صُممت لأجلك</h2>
-          </div>
+          <ScrollSection className="text-center mb-xl reveal">
+            <span className="text-secondary font-bold tracking-widest text-sm uppercase block mb-xs">خدماتنا</span>
+            <h2 className="font-bold text-headline-md text-primary">حلول سفر متكاملة صُممت لأجلك</h2>
+          </ScrollSection>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-            {services.map((s) => (
+            {services.map((s, i) => (
               <div
                 key={s.title}
-                className="bg-white p-lg border border-outline-variant/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-secondary"
+                className={`reveal reveal-delay-${Math.min(i + 1, 4)} bg-white p-lg border border-outline-variant/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-secondary`}
               >
-                <Icon name={s.icon} className="text-primary !text-5xl mb-md block" />
-                <h3 className="font-arabic-headline font-bold text-headline-sm text-primary mb-sm">{s.title}</h3>
+                <s.icon className="w-12 h-12 text-primary mb-md" strokeWidth={1.5} />
+                <h3 className="font-bold text-headline-sm text-primary mb-sm">{s.title}</h3>
                 <p className="text-body-md text-on-surface-variant leading-loose">{s.desc}</p>
               </div>
             ))}
@@ -124,28 +176,58 @@ function Index() {
         </div>
       </section>
 
-      {/* Contact */}
+      {/* ── Offers ── */}
+      <OffersSection />
+
+      {/* ── Testimonials ── */}
+      <TestimonialsSection />
+
+      {/* ── Partners ── */}
+      <section className="py-10 bg-white border-y border-outline-variant/30 overflow-hidden">
+        <div className="max-w-container-max mx-auto px-md mb-6 text-center">
+          <p className="text-on-surface-variant text-sm font-semibold tracking-widest uppercase">
+            شركاؤنا من كبرى شركات الطيران العالمية
+          </p>
+        </div>
+        <div className="relative overflow-hidden">
+          <div className="marquee-track">
+            {[...partners, ...partners].map((name, i) => (
+              <div
+                key={`${name}-${i}`}
+                className="flex-none flex items-center justify-center px-10 py-3 mx-2 border border-outline-variant/30 rounded-full min-w-max"
+              >
+                <Plane className="w-4 h-4 text-secondary ml-2" />
+                <span className="text-primary font-bold text-sm">{name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Contact ── */}
       <section id="contact" className="py-xl bg-primary text-on-primary">
         <div className="max-w-container-max mx-auto px-md">
+          <ScrollSection className="text-center mb-xl reveal">
+            <span className="text-secondary font-bold tracking-widest text-sm uppercase block mb-xs">تواصل معنا</span>
+            <h2 className="font-bold text-display-lg-mobile md:text-headline-md">تواصل معنا اليوم</h2>
+            <p className="text-on-primary/80 text-body-lg mt-sm">
+              نحن متواجدون لخدمتك في فروعنا بالإمارات والسعودية. فريقنا جاهز للرد على استفساراتك.
+            </p>
+          </ScrollSection>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-xl">
-            <div className="space-y-lg">
-              <h2 className="font-arabic-headline font-bold text-display-lg-mobile md:text-headline-md">تواصل معنا اليوم</h2>
-              <p className="text-body-lg text-on-primary-container">
-                نحن متواجدون لخدمتك في فروعنا بالإمارات والسعودية. فريقنا جاهز للرد على استفساراتك.
-              </p>
+            {/* Contact info */}
+            <div className="space-y-md">
               <div className="space-y-md">
-                {[
-                  { href: "https://wa.me/971507046772", icon: "call", label: "واتساب (الإمارات)", val: "+971 50 704 6772" },
-                  { href: "mailto:info@directwaystravel.com", icon: "mail", label: "البريد الإلكتروني", val: "info@directwaystravel.com" },
-                  { href: "https://www.instagram.com/directwaystravel", icon: "photo_camera", label: "إنستغرام", val: "@directwaystravel" },
-                  { href: "https://t.me/directwaystravel", icon: "send", label: "تيليغرام", val: "@directwaystravel" },
-                ].map((c) => (
+                {contactLinks.map((c) => (
                   <a
                     key={c.href}
                     href={c.href}
+                    target={c.href.startsWith("http") ? "_blank" : undefined}
+                    rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
                     className="flex items-center gap-md p-md bg-white/5 border border-white/10 hover:bg-white/10 transition-all"
                   >
-                    <Icon name={c.icon} className="text-secondary-fixed !text-3xl" />
+                    <c.Icon className="w-7 h-7 text-secondary flex-shrink-0" strokeWidth={1.5} />
                     <div>
                       <p className="text-label-md opacity-70">{c.label}</p>
                       <p className="text-headline-sm font-bold">{c.val}</p>
@@ -153,63 +235,163 @@ function Index() {
                   </a>
                 ))}
               </div>
+
+              {/* Offices */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-md pt-md">
+                {[
+                  { city: "دبي، الإمارات",    addr: "شارع الشيخ زايد، برج المدينة، المكتب 402", hours: "٩ص – ٦م (الأحد – الخميس)" },
+                  { city: "الرياض، السعودية", addr: "حي العليا، طريق الملك فهد، مركز العليا التجاري", hours: "٩ص – ٦م (الأحد – الخميس)" },
+                ].map((office) => (
+                  <div key={office.city} className="p-md bg-white/10 space-y-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <MapPin className="w-4 h-4 text-secondary" />
+                      <p className="font-bold text-secondary text-sm">{office.city}</p>
+                    </div>
+                    <p className="text-body-md opacity-80">{office.addr}</p>
+                    <div className="flex items-center gap-1.5 pt-1">
+                      <Clock className="w-3.5 h-3.5 opacity-60" />
+                      <p className="text-xs opacity-60">{office.hours}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="bg-white/5 p-lg border border-white/10">
-              <h3 className="font-arabic-headline font-bold text-headline-sm mb-md">مواقعنا</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-                <div className="p-md bg-white/10">
-                  <p className="font-bold text-secondary-fixed mb-xs">دبي، الإمارات</p>
-                  <p className="text-body-md">شارع الشيخ زايد، برج المدينة، المكتب 402</p>
-                </div>
-                <div className="p-md bg-white/10">
-                  <p className="font-bold text-secondary-fixed mb-xs">الرياض، السعودية</p>
-                  <p className="text-body-md">حي العليا، طريق الملك فهد، مركز العليا التجاري</p>
-                </div>
-              </div>
-              <div className="mt-md aspect-video bg-white/10 overflow-hidden relative">
-                <img
-                  className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700"
-                  src={MAP_IMG}
-                  alt="خريطة مواقعنا"
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="bg-primary px-lg py-sm text-label-md border border-secondary">عرض الخريطة التفاعلية</span>
-                </div>
-              </div>
+
+            {/* Contact form */}
+            <div className="bg-white/5 border border-white/10 p-lg">
+              <h3 className="font-bold text-headline-sm mb-lg">أرسل لنا رسالة</h3>
+              <ContactForm />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-primary text-on-primary/80 border-t border-white/10 py-lg">
-        <div className="max-w-container-max mx-auto px-md text-center text-body-md">
-          © {new Date().getFullYear()} دايركت وايز للسفر والسياحة. جميع الحقوق محفوظة.
+      {/* ── Footer ── */}
+      <footer className="bg-primary border-t border-white/10">
+        {/* Gold separator */}
+        <div className="h-px header-gold-line" />
+
+        <div className="max-w-container-max mx-auto px-md py-xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-xl">
+            {/* Brand */}
+            <div className="space-y-md">
+              <div className="flex items-center gap-3">
+                <svg width="44" height="44" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+                  <path d="M6 4 L24 4 C40 4 52 14 52 28 C52 42 40 52 24 52 L6 52 Z" fill="#2a3870" />
+                  <path d="M13 12 L23 12 C35 12 44 19 44 28 C44 37 35 44 23 44 L13 44 Z" fill="#3a4890" />
+                  <path d="M18 20 L22 20 C29 20 35 23.5 35 28 C35 32.5 29 36 22 36 L18 36 Z" fill="#2a3870" />
+                  <g transform="translate(14,17) rotate(-10)">
+                    <path d="M4 11 L22 7 C24 6.5 25 7.5 24 9 L18 13 L20 20 L16 19 L14 14 L8 16 L9 19 L6 18 L5 14 L2 13 Z" fill="white" opacity="0.9" />
+                  </g>
+                </svg>
+                <div>
+                  <p className="font-black text-on-primary text-base">دايركت وايز</p>
+                  <p className="text-secondary text-xs tracking-widest uppercase">Direct Ways Travel</p>
+                </div>
+              </div>
+              <p className="text-on-primary/70 text-sm leading-relaxed">
+                وكالة سفر وسياحة رائدة في الإمارات والسعودية منذ أكثر من 15 عاماً. نجعل أحلامك السياحية حقيقة.
+              </p>
+              <div className="flex gap-3">
+                {[
+                  { href: "https://www.instagram.com/directwaystravel", Icon: Instagram, label: "إنستغرام" },
+                  { href: "https://t.me/directwaystravel",              Icon: Send,      label: "تيليغرام" },
+                  { href: "https://wa.me/971507046772",                 Icon: Phone,     label: "واتساب" },
+                ].map((s) => (
+                  <a
+                    key={s.href}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all"
+                  >
+                    <s.Icon className="w-4 h-4 text-on-primary" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick links */}
+            <div>
+              <h4 className="font-bold text-on-primary mb-md text-sm uppercase tracking-widest">روابط سريعة</h4>
+              <ul className="space-y-2">
+                {footerLinks.map((l) => (
+                  <li key={l.href}>
+                    <a
+                      href={l.href}
+                      onClick={(e) => { e.preventDefault(); handleScroll(l.href); }}
+                      className="text-on-primary/70 hover:text-secondary text-sm transition-colors flex items-center gap-2"
+                    >
+                      <ArrowLeft className="w-3 h-3" />
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact summary */}
+            <div>
+              <h4 className="font-bold text-on-primary mb-md text-sm uppercase tracking-widest">تواصل معنا</h4>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-3 text-on-primary/70 text-sm">
+                  <Phone className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span dir="ltr">+971 50 704 6772</span>
+                </li>
+                <li className="flex items-center gap-3 text-on-primary/70 text-sm">
+                  <Mail className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <span>info@directwaystravel.com</span>
+                </li>
+                <li className="flex items-start gap-3 text-on-primary/70 text-sm">
+                  <MapPin className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
+                  <span>دبي، الإمارات | الرياض، السعودية</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="border-t border-white/10 py-md">
+          <div className="max-w-container-max mx-auto px-md flex flex-col sm:flex-row-reverse items-center justify-between gap-2 text-xs text-on-primary/50">
+            <span>© {new Date().getFullYear()} دايركت وايز للسفر والسياحة. جميع الحقوق محفوظة.</span>
+            <span>صُمّم باحترافية لخدمتكم</span>
+          </div>
         </div>
       </footer>
 
-      {/* Floating actions */}
+      {/* ── Floating actions ── */}
       <div className="fixed bottom-md left-md flex flex-col gap-sm z-50">
         <a
           href="https://t.me/directwaystravel"
-          title="تيليغرام"
-          className="bg-white text-primary rounded-full border border-outline-variant shadow-xl hover:scale-110 transition-transform flex items-center justify-center w-14 h-14"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="تيليغرام"
+          className="bg-white text-primary rounded-full border border-outline-variant shadow-xl hover:scale-110 hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center w-14 h-14"
         >
-          <Icon name="send" className="!text-3xl" />
+          <Send className="w-6 h-6" />
         </a>
         <a
           href="https://wa.me/971507046772"
-          title="واتساب"
-          className="bg-white text-primary rounded-full border border-outline-variant shadow-xl hover:scale-110 transition-transform flex items-center justify-center w-14 h-14"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="واتساب"
+          className="bg-white rounded-full border border-outline-variant shadow-xl hover:scale-110 transition-all flex items-center justify-center w-14 h-14"
         >
-          <Icon name="chat" className="!text-3xl" />
+          {/* WhatsApp SVG */}
+          <svg viewBox="0 0 24 24" className="w-7 h-7 fill-[#25D366]" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
         </a>
         <a
           href="https://www.instagram.com/directwaystravel"
-          title="إنستغرام"
-          className="bg-white text-primary rounded-full border border-outline-variant shadow-xl hover:scale-110 transition-transform flex items-center justify-center w-14 h-14"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="إنستغرام"
+          className="bg-white text-primary rounded-full border border-outline-variant shadow-xl hover:scale-110 hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-all flex items-center justify-center w-14 h-14"
         >
-          <Icon name="photo_camera" className="!text-3xl" />
+          <Instagram className="w-6 h-6" />
         </a>
       </div>
     </div>
