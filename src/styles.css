@@ -4,6 +4,38 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: "MadaniArabic";
+  src: url("/fonts/madani-arabic/MadaniArabic-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MadaniArabic";
+  src: url("/fonts/madani-arabic/MadaniArabic-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MadaniArabic";
+  src: url("/fonts/madani-arabic/MadaniArabic-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MadaniArabic";
+  src: url("/fonts/madani-arabic/MadaniArabic-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 /*
  * Design system definition.
  *
@@ -70,8 +102,8 @@
   --color-on-secondary-container: var(--on-secondary-container);
   --color-secondary-fixed: var(--secondary-fixed);
   --color-outline-variant: var(--outline-variant);
-  --font-arabic-headline: "Segoe UI", "Tahoma", "Arial", system-ui, sans-serif;
-  --font-arabic-body: "Segoe UI", "Tahoma", "Arial", system-ui, sans-serif;
+  --font-arabic-headline: "MadaniArabic", "Segoe UI", "Tahoma", "Arial", system-ui, sans-serif;
+  --font-arabic-body: "MadaniArabic", "Segoe UI", "Tahoma", "Arial", system-ui, sans-serif;
   --spacing-xs: 0.5rem;
   --spacing-sm: 0.75rem;
   --spacing-md: 1.25rem;
@@ -241,7 +273,7 @@
 
 /* Hero background */
 .hero-bg {
-  background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBkgUR32H6cD4vmhJ5RWWYLeArF6sMDehc6BaGWnRyCpKyOKSqdUefOrby_l8s5eEtqPPFvKLKIKluIJmZSMQ6AX6mNXavPFnYBLm2sqpXtn8t0exrwSb1D27Zz3X_UX06VrzoS-7_WBDckiRE7Cw1ME2QW1JqaozfkaNCaaPkjM_zTEK6v0ocedfPAVPCfUAxFqZ_6idxlm0mwAwSSx2d_vro-ayysG-V-ct_FVGP0dszXynpCBi6wiwaOFu6Qib6s-ETg4m5eC3I');
+  background-image: url('/hero-maldives-overwater-villas.jpg');
   background-size: cover;
   background-position: center;
 }
