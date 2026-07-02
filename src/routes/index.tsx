@@ -139,7 +139,7 @@ function Index() {
               <div className="flex flex-wrap gap-lg pt-md border-t border-outline-variant">
                 <div className="flex items-center gap-sm">
                   <ShieldCheck className="w-9 h-9 text-secondary" strokeWidth={1.5} />
-                  <span className="text-label-md text-primary font-bold">موثوقية تامة</span>
+                  <span className="text-label-md text-primary font-bold">موثوقية عالية</span>
                 </div>
                 <div className="flex items-center gap-sm">
                   <HeadphonesIcon className="w-9 h-9 text-secondary" strokeWidth={1.5} />
