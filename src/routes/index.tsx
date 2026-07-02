@@ -9,7 +9,7 @@ import Header from "../components/Header";
 import StatsSection from "../components/StatsSection";
 import DestinationsSection from "../components/DestinationsSection";
 import OffersSection from "../components/OffersSection";
-import TestimonialsSection from "../components/TestimonialsSection";
+import MapSection from "../components/MapSection";
 import ContactForm from "../components/ContactForm";
 import { useScrollReveal } from "../hooks/use-scroll-reveal";
 
@@ -179,8 +179,8 @@ function Index() {
       {/* ── Offers ── */}
       <OffersSection />
 
-      {/* ── Testimonials ── */}
-      <TestimonialsSection />
+      {/* ── Map ── */}
+      <MapSection />
 
       {/* ── Partners ── */}
       <section className="py-10 bg-white border-y border-outline-variant/30 overflow-hidden">
