@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Plane, Building2, Globe, Car, FileText, Hotel,
   ShieldCheck, HeadphonesIcon, Phone, Mail, Send,
-  Instagram, MapPin, Clock, ArrowLeft,
+  Instagram, MapPin, ArrowLeft,
 } from "lucide-react";
 
 import Header from "../components/Header";
@@ -230,29 +230,9 @@ function Index() {
                     <c.Icon className="w-7 h-7 text-secondary flex-shrink-0" strokeWidth={1.5} />
                     <div>
                       <p className="text-label-md opacity-70">{c.label}</p>
-                      <p className="text-headline-sm font-bold">{c.val}</p>
+                      <p dir="ltr" className="text-headline-sm font-bold text-right">{c.val}</p>
                     </div>
                   </a>
-                ))}
-              </div>
-
-              {/* Offices */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-md pt-md">
-                {[
-                  { city: "دبي، الإمارات",    addr: "شارع الشيخ زايد، برج المدينة، المكتب 402", hours: "٩ص – ٦م (الأحد – الخميس)" },
-                  { city: "الرياض، السعودية", addr: "حي العليا، طريق الملك فهد، مركز العليا التجاري", hours: "٩ص – ٦م (الأحد – الخميس)" },
-                ].map((office) => (
-                  <div key={office.city} className="p-md bg-white/10 space-y-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <MapPin className="w-4 h-4 text-secondary" />
-                      <p className="font-bold text-secondary text-sm">{office.city}</p>
-                    </div>
-                    <p className="text-body-md opacity-80">{office.addr}</p>
-                    <div className="flex items-center gap-1.5 pt-1">
-                      <Clock className="w-3.5 h-3.5 opacity-60" />
-                      <p className="text-xs opacity-60">{office.hours}</p>
-                    </div>
-                  </div>
                 ))}
               </div>
             </div>
