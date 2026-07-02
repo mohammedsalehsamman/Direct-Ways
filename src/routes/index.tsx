@@ -70,8 +70,8 @@ function Index() {
         id="home"
         className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
       >
-        <div className="absolute inset-0 z-0">
-          <div className="hero-bg w-full h-full scale-105" />
+        <div className="absolute -inset-1 z-0">
+          <div className="hero-bg w-full h-full" />
           <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/35 to-transparent" />
         </div>
         <div className="relative z-10 text-center px-md max-w-4xl mx-auto">
