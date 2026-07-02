@@ -154,7 +154,7 @@ export default function OffersSection() {
         <div ref={headerRef} className="text-center mb-xl reveal">
           <span className="text-secondary font-bold tracking-widest text-sm uppercase block mb-xs">عروضنا الحصرية</span>
           <h2 className="font-bold text-headline-md text-primary">أفضل العروض السياحية لهذا الموسم</h2>
-          <p className="text-on-surface-variant text-body-lg mt-sm max-w-xl mx-auto">باقات سياحية مميزة بأسعار تنافسية لا تُفوَّت</p>
+          <p className="text-on-surface-variant text-body-lg mt-sm max-w-2xl mx-auto">باقات سياحية مميزة بأسعار تنافسية لا تُفوَّت</p>
         </div>
 
         <Tabs defaultValue="all">

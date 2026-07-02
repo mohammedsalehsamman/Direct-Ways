@@ -48,7 +48,7 @@ export default function DestinationsSection() {
         <div ref={headerRef} className="text-center mb-xl reveal">
           <span className="text-secondary font-bold tracking-widest text-sm uppercase block mb-xs">وجهاتنا السياحية</span>
           <h2 className="font-bold text-headline-md text-primary">اكتشف أجمل وجهات العالم</h2>
-          <p className="text-on-surface-variant text-body-lg mt-sm max-w-xl mx-auto">رحلات مصممة بعناية لأكثر الوجهات إثارةً حول العالم</p>
+          <p className="text-on-surface-variant text-body-lg mt-sm max-w-2xl mx-auto">رحلات مصممة بعناية لأكثر الوجهات إثارةً حول العالم</p>
         </div>
 
         <div className="relative">

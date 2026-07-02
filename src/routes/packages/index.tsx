@@ -126,7 +126,7 @@ function PackagesPage() {
         <h1 className="font-black text-display-lg-mobile md:text-headline-md mb-3">
           جميع باقاتنا السياحية
         </h1>
-        <p className="text-on-primary/80 text-body-lg max-w-xl mx-auto">
+        <p className="text-on-primary/80 text-body-lg max-w-2xl mx-auto">
           اختر من بين مجموعة متنوعة من الباقات المصممة لكل الميزانيات والاحتياجات
         </p>
       </section>

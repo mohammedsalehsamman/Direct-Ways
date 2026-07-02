@@ -48,7 +48,7 @@ function ContactPage() {
         <h1 className="font-black text-display-lg-mobile md:text-headline-md mb-3">
           تواصل معنا
         </h1>
-        <p className="text-on-primary/80 text-body-lg max-w-xl mx-auto">
+        <p className="text-on-primary/80 text-body-lg max-w-2xl mx-auto">
           فريقنا جاهز لمساعدتك في تخطيط رحلتك المثالية — تواصل معنا الآن
         </p>
       </section>
@@ -75,8 +75,8 @@ function ContactPage() {
                       <c.Icon className={`w-5 h-5 ${c.color}`} strokeWidth={1.5} />
                     </div>
                     <div>
-                      <p className="text-xs text-on-surface-variant mb-0.5">{c.label}</p>
-                      <p className="font-bold text-primary text-sm">{c.val}</p>
+                      <p className="text-[0.6rem] text-on-surface-variant mb-0.5">{c.label}</p>
+                      <p className="font-bold text-primary text-[0.7rem]">{c.val}</p>
                     </div>
                   </a>
                 ))}

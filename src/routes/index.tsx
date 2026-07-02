@@ -10,7 +10,6 @@ import StatsSection from "../components/StatsSection";
 import DestinationsSection from "../components/DestinationsSection";
 import OffersSection from "../components/OffersSection";
 import MapSection from "../components/MapSection";
-import ContactForm from "../components/ContactForm";
 import { useScrollReveal } from "../hooks/use-scroll-reveal";
 
 export const Route = createFileRoute("/")({ component: Index });
@@ -191,7 +190,7 @@ function Index() {
         </div>
         <div className="relative overflow-hidden">
           <div className="marquee-track">
-            {[...partners, ...partners].map((name, i) => (
+            {[...partners, ...partners, ...partners, ...partners].map((name, i) => (
               <div
                 key={`${name}-${i}`}
                 className="flex-none flex items-center justify-center px-10 py-3 mx-2 border border-outline-variant/30 rounded-full min-w-max"
@@ -210,38 +209,27 @@ function Index() {
           <ScrollSection className="text-center mb-xl reveal">
             <span className="text-secondary font-bold tracking-widest text-sm uppercase block mb-xs">تواصل معنا</span>
             <h2 className="font-bold text-display-lg-mobile md:text-headline-md">تواصل معنا اليوم</h2>
-            <p className="text-on-primary/80 text-body-lg mt-sm">
+            <p className="text-on-primary/80 text-body-md md:text-body-lg mt-sm">
               نحن متواجدون لخدمتك في فروعنا بالإمارات والسعودية. فريقنا جاهز للرد على استفساراتك.
             </p>
           </ScrollSection>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-xl">
-            {/* Contact info */}
-            <div className="space-y-md">
-              <div className="space-y-md">
-                {contactLinks.map((c) => (
-                  <a
-                    key={c.href}
-                    href={c.href}
-                    target={c.href.startsWith("http") ? "_blank" : undefined}
-                    rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="flex items-center gap-md p-md bg-white/5 border border-white/10 hover:bg-white/10 transition-all"
-                  >
-                    <c.Icon className="w-7 h-7 text-secondary flex-shrink-0" strokeWidth={1.5} />
-                    <div>
-                      <p className="text-label-md opacity-70">{c.label}</p>
-                      <p dir="ltr" className="text-headline-sm font-bold text-right">{c.val}</p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Contact form */}
-            <div className="bg-white/5 border border-white/10 p-lg">
-              <h3 className="font-bold text-headline-sm mb-lg">أرسل لنا رسالة</h3>
-              <ContactForm />
-            </div>
+          <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-md">
+            {contactLinks.map((c) => (
+              <a
+                key={c.href}
+                href={c.href}
+                target={c.href.startsWith("http") ? "_blank" : undefined}
+                rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="flex items-center gap-md p-md bg-white/5 border border-white/10 hover:bg-white/10 transition-all"
+              >
+                <c.Icon className="w-7 h-7 text-secondary flex-shrink-0" strokeWidth={1.5} />
+                <div className="min-w-0 flex-1">
+                  <p className="text-label-md opacity-70">{c.label}</p>
+                  <p dir="ltr" className="text-body-md md:text-headline-sm font-bold text-right break-words">{c.val}</p>
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>

@@ -236,13 +236,14 @@
 
 /* Partners marquee */
 @keyframes marquee-rtl {
-  from { translate: -50% 0; }
-  to   { translate: 0 0; }
+  from { transform: translateX(-25%); }
+  to   { transform: translateX(0); }
 }
 .marquee-track {
   display: flex;
   width: max-content;
-  will-change: translate;
+  backface-visibility: hidden;
+  will-change: transform;
   animation: marquee-rtl 28s linear infinite;
 }
 .marquee-track:hover {
