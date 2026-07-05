@@ -34,7 +34,7 @@ export default function MapSection() {
             </div>
             <div className="flex items-center gap-sm">
               <Clock className="w-6 h-6 text-secondary flex-shrink-0" strokeWidth={1.5} />
-              <p className="text-body-md text-on-surface-variant">٩ص – ٦م (يومياً عدا الجمعة)</p>
+              <p className="text-body-md text-on-surface-variant">٩ص – ٦م (يومياً عدا السبت والأحد)</p>
             </div>
             <div className="flex items-center gap-sm">
               <Phone className="w-6 h-6 text-secondary flex-shrink-0" strokeWidth={1.5} />

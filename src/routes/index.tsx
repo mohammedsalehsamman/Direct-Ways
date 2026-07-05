@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Plane, Building2, Globe, Car, FileText, Hotel,
-  ShieldCheck, HeadphonesIcon, Phone, Mail, Send,
+  ShieldCheck, HeadphonesIcon, Phone, Mail,
   Instagram, MapPin, ArrowLeft,
 } from "lucide-react";
 
@@ -10,7 +10,7 @@ import StatsSection from "../components/StatsSection";
 import DestinationsSection from "../components/DestinationsSection";
 import OffersSection from "../components/OffersSection";
 import MapSection from "../components/MapSection";
-import { useScrollReveal } from "../hooks/use-scroll-reveal";
+import { useScrollReveal, useScrollRevealChildren } from "../hooks/use-scroll-reveal";
 
 export const Route = createFileRoute("/")({ component: Index });
 
@@ -30,7 +30,7 @@ const contactLinks = [
   { href: "https://wa.me/971507046772",               Icon: Phone,     label: "واتساب (الإمارات)", val: "+971 50 704 6772" },
   { href: "mailto:info@directwaystravel.com",         Icon: Mail,      label: "البريد الإلكتروني", val: "info@directwaystravel.com" },
   { href: "https://www.instagram.com/directwaystravel", Icon: Instagram, label: "إنستغرام",         val: "@directwaystravel" },
-  { href: "https://t.me/directwaystravel",            Icon: Send,      label: "تيليغرام",          val: "@directwaystravel" },
+  { href: "tel:+97124439016",                          Icon: Phone,     label: "الهاتف الأرضي",     val: "+971 2 443 9016" },
 ];
 
 const partners = [
@@ -54,6 +54,8 @@ function ScrollSection({ children, className }: { children: React.ReactNode; cla
 }
 
 function Index() {
+  const servicesGridRef = useScrollRevealChildren<HTMLDivElement>();
+
   const handleScroll = (href: string) => {
     const id = href.replace("#", "");
     if (id === "home") { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
@@ -128,9 +130,9 @@ function Index() {
             </ScrollSection>
             <ScrollSection className="order-1 lg:order-2 space-y-md reveal reveal-delay-2">
               <span className="text-secondary font-bold tracking-widest block mb-xs">من نحن؟</span>
-              <h2 className="font-bold text-headline-md text-primary">رواد السياحة في الخليج العربي</h2>
+              <h2 className="font-bold text-headline-md text-primary">متخصصون في حلول السياحة والسفر للأفراد والشركات</h2>
               <p className="text-body-lg text-on-surface-variant leading-loose">
-                تتميز دايركت وايز بخبرة واسعة في تنظيم الرحلات السياحية المتكاملة. ننتشر عبر فروعنا في دولة الإمارات العربية المتحدة (دبي) والمملكة العربية السعودية (الرياض)، لنكون الأقرب لعملائنا في كل وقت.
+                تتميز دايركت وايز بخبرة واسعة في عالم السياحة والسفر المتكامل انطلاقاً من دولة الإمارات العربية المتحدة - أبوظبي.
               </p>
               <p className="text-body-lg text-on-surface-variant leading-loose">
                 يضم فريقنا نخبة من المتخصصين الملتزمين بتقديم أعلى معايير الجودة والمرونة، مع التركيز التام على خدمة العملاء وتلبية كافة تطلعاتهم الشخصية والمهنية في عالم السفر.
@@ -160,7 +162,7 @@ function Index() {
             <span className="text-secondary font-bold tracking-widest text-sm uppercase block mb-xs">خدماتنا</span>
             <h2 className="font-bold text-headline-md text-primary">حلول سفر متكاملة صُممت لأجلك</h2>
           </ScrollSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+          <div ref={servicesGridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
             {services.map((s, i) => (
               <div
                 key={s.title}
@@ -210,7 +212,7 @@ function Index() {
             <span className="text-secondary font-bold tracking-widest text-sm uppercase block mb-xs">تواصل معنا</span>
             <h2 className="font-bold text-display-lg-mobile md:text-headline-md">تواصل معنا اليوم</h2>
             <p className="text-on-primary/80 text-body-md md:text-body-lg mt-sm">
-              نحن متواجدون لخدمتك في فروعنا بالإمارات والسعودية. فريقنا جاهز للرد على استفساراتك.
+              نحن متواجدون لخدمتكم وفريقنا جاهز للرد على استفساراتكم.
             </p>
           </ScrollSection>
 
@@ -243,27 +245,19 @@ function Index() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-xl">
             {/* Brand */}
             <div className="space-y-md">
-              <div className="flex items-center gap-3">
-                <svg width="44" height="44" viewBox="0 0 56 56" fill="none" aria-hidden="true">
-                  <path d="M6 4 L24 4 C40 4 52 14 52 28 C52 42 40 52 24 52 L6 52 Z" fill="#2a3870" />
-                  <path d="M13 12 L23 12 C35 12 44 19 44 28 C44 37 35 44 23 44 L13 44 Z" fill="#3a4890" />
-                  <path d="M18 20 L22 20 C29 20 35 23.5 35 28 C35 32.5 29 36 22 36 L18 36 Z" fill="#2a3870" />
-                  <g transform="translate(14,17) rotate(-10)">
-                    <path d="M4 11 L22 7 C24 6.5 25 7.5 24 9 L18 13 L20 20 L16 19 L14 14 L8 16 L9 19 L6 18 L5 14 L2 13 Z" fill="white" opacity="0.9" />
-                  </g>
-                </svg>
-                <div>
-                  <p className="font-black text-on-primary text-base">دايركت وايز</p>
-                  <p className="text-secondary text-xs tracking-widest uppercase">Direct Ways Travel</p>
-                </div>
+              <div className="bg-white rounded-md p-2 inline-block">
+                <img
+                  src="/logo.jpg"
+                  alt="دايركت وايز للسفر والسياحة - Direct Ways Travel & Tourism"
+                  className="h-12 w-auto"
+                />
               </div>
               <p className="text-on-primary/70 text-sm leading-relaxed">
-                وكالة سفر وسياحة رائدة في الإمارات والسعودية منذ أكثر من 15 عاماً. نجعل أحلامك السياحية حقيقة.
+                وكالة سفر وسياحة رائدة في الإمارات بخبرة أكثر من 15 عاماً. نجعل أحلامك السياحية حقيقة.
               </p>
               <div className="flex gap-3">
                 {[
                   { href: "https://www.instagram.com/directwaystravel", Icon: Instagram, label: "إنستغرام" },
-                  { href: "https://t.me/directwaystravel",              Icon: Send,      label: "تيليغرام" },
                   { href: "https://wa.me/971507046772",                 Icon: Phone,     label: "واتساب" },
                 ].map((s) => (
                   <a
@@ -313,7 +307,7 @@ function Index() {
                 </li>
                 <li className="flex items-start gap-3 text-on-primary/70 text-sm">
                   <MapPin className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
-                  <span>دبي، الإمارات | الرياض، السعودية</span>
+                  <span>أبوظبي - الإمارات</span>
                 </li>
               </ul>
             </div>
@@ -331,15 +325,6 @@ function Index() {
 
       {/* ── Floating actions ── */}
       <div className="fixed bottom-md left-md flex flex-col gap-sm z-50">
-        <a
-          href="https://t.me/directwaystravel"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="تيليغرام"
-          className="bg-white text-primary rounded-full border border-outline-variant shadow-xl hover:scale-110 hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center w-14 h-14"
-        >
-          <Send className="w-6 h-6" />
-        </a>
         <a
           href="https://wa.me/971507046772"
           target="_blank"

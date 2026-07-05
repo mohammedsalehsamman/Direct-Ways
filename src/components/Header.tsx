@@ -11,36 +11,11 @@ const navLinks = [
 
 function DirectWaysLogo({ compact = false }: { compact?: boolean }) {
   return (
-    <div className="flex items-center gap-3 select-none">
-      <div className="relative flex-shrink-0">
-        <svg
-          width={compact ? 44 : 52}
-          height={compact ? 44 : 52}
-          viewBox="0 0 56 56"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <path d="M6 4 L24 4 C40 4 52 14 52 28 C52 42 40 52 24 52 L6 52 Z" fill="#1a2456" />
-          <path d="M13 12 L23 12 C35 12 44 19 44 28 C44 37 35 44 23 44 L13 44 Z" fill="#2a3870" />
-          <path d="M18 20 L22 20 C29 20 35 23.5 35 28 C35 32.5 29 36 22 36 L18 36 Z" fill="#1a2456" />
-          <g transform="translate(14,17) rotate(-10)">
-            <path
-              d="M4 11 L22 7 C24 6.5 25 7.5 24 9 L18 13 L20 20 L16 19 L14 14 L8 16 L9 19 L6 18 L5 14 L2 13 Z"
-              fill="white"
-              opacity="0.95"
-            />
-          </g>
-        </svg>
-      </div>
-      <div className="flex flex-col leading-none">
-        <span className={compact ? "logo-name logo-name-compact" : "logo-name"}>
-          دايركت وايز
-        </span>
-        <span className="logo-sub">Direct Ways</span>
-        <span className="logo-tagline">Travel &amp; Tourism</span>
-      </div>
-    </div>
+    <img
+      src="/logo.jpg"
+      alt="دايركت وايز للسفر والسياحة - Direct Ways Travel & Tourism"
+      className={compact ? "h-10 w-auto select-none" : "h-12 w-auto select-none"}
+    />
   );
 }
 

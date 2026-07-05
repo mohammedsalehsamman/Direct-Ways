@@ -3,7 +3,7 @@ import { Clock, Users, Star, ArrowLeft } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 import { useScrollReveal } from "../hooks/use-scroll-reveal";
 
-type Category = "all" | "umrah" | "tourism" | "hotels";
+type Category = "all" | "tourism" | "hotels";
 
 type Offer = {
   id: string;
@@ -22,16 +22,6 @@ type Offer = {
 };
 
 const offers: Offer[] = [
-  {
-    id: "umrah-ramadan",
-    category: "umrah",
-    title: "عمرة رمضان الفاخرة",
-    desc: "باقة متكاملة تشمل الإقامة في فندق 5 نجوم قريب من الحرم مع وجبات ومواصلات.",
-    price: "٣٬٩٩٩", oldPrice: "٥٬٢٠٠",
-    duration: "١٠ أيام", persons: "٢ شخص", rating: 4.9,
-    badge: "خصم ٢٣%", badgeColor: "bg-red-500",
-    gradient: "from-amber-700 to-yellow-600", icon: "🕌",
-  },
   {
     id: "turkey-tour",
     category: "tourism",
@@ -72,28 +62,17 @@ const offers: Offer[] = [
     badge: "خصم ١٦%", badgeColor: "bg-red-500",
     gradient: "from-blue-900 to-blue-600", icon: "🏙️",
   },
-  {
-    id: "umrah-plus",
-    category: "umrah",
-    title: "عمرة + زيارة المدينة",
-    desc: "برنامج روحاني شامل يجمع بين أداء العمرة وزيارة المدينة المنورة والمقامات.",
-    price: "٢٬٨٩٩",
-    duration: "٨ أيام", persons: "شخص واحد", rating: 4.8,
-    badge: "مميز", badgeColor: "bg-secondary",
-    gradient: "from-amber-800 to-amber-600", icon: "🕋",
-  },
 ];
 
 const tabs: { value: Category; label: string }[] = [
   { value: "all",     label: "جميع العروض" },
-  { value: "umrah",   label: "عمرة وحج" },
   { value: "tourism", label: "سياحية" },
   { value: "hotels",  label: "فنادق" },
 ];
 
 function OfferCard({ offer }: { offer: Offer }) {
   return (
-    <div className="reveal bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-outline-variant/30 transition-all duration-300 hover:-translate-y-1 flex flex-col">
+    <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-outline-variant/30 transition-all duration-300 hover:-translate-y-1 flex flex-col">
       <div className={`relative h-44 bg-gradient-to-br ${offer.gradient} flex items-center justify-center`}>
         <span className="text-7xl filter drop-shadow-lg">{offer.icon}</span>
         {offer.badge && (
@@ -154,7 +133,7 @@ export default function OffersSection() {
         <div ref={headerRef} className="text-center mb-xl reveal">
           <span className="text-secondary font-bold tracking-widest text-sm uppercase block mb-xs">عروضنا الحصرية</span>
           <h2 className="font-bold text-headline-md text-primary">أفضل العروض السياحية لهذا الموسم</h2>
-          <p className="text-on-surface-variant text-body-lg mt-sm max-w-2xl mx-auto">باقات سياحية مميزة بأسعار تنافسية لا تُفوَّت</p>
+          <p className="text-on-surface-variant text-body-lg mt-sm max-w-2xl mx-auto">تنظيم باقات سياحية مميزة حسب الطلب</p>
         </div>
 
         <Tabs defaultValue="all">
@@ -175,7 +154,6 @@ export default function OffersSection() {
               {offers.map((o) => <OfferCard key={o.id} offer={o} />)}
             </div>
           </TabsContent>
-          <TabsContent value="umrah"><FilteredGrid category="umrah" /></TabsContent>
           <TabsContent value="tourism"><FilteredGrid category="tourism" /></TabsContent>
           <TabsContent value="hotels"><FilteredGrid category="hotels" /></TabsContent>
         </Tabs>
