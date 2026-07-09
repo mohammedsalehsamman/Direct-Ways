@@ -4,14 +4,14 @@ import { ChevronRight, ChevronLeft, MapPin } from "lucide-react";
 import { useScrollReveal } from "../hooks/use-scroll-reveal";
 
 const destinations = [
-  { name: "دبي", country: "الإمارات", desc: "مدينة المستقبل — ناطحات السحاب والشواطئ والتسوق الفاخر", gradient: "from-blue-900 via-blue-700 to-cyan-500", icon: "🏙️", tag: "الأكثر طلباً" },
-  { name: "مكة المكرمة", country: "السعودية", desc: "أقدس البقاع — رحلة إيمانية لا تُنسى إلى بيت الله الحرام", gradient: "from-amber-900 via-yellow-700 to-amber-500", icon: "🕌", tag: "عمرة وحج" },
-  { name: "إسطنبول", country: "تركيا", desc: "حيث يلتقي الشرق والغرب — التاريخ والثقافة والمطبخ الفريد", gradient: "from-red-900 via-red-700 to-orange-500", icon: "🌙", tag: "رحلات عائلية" },
-  { name: "ماليزيا", country: "كوالالمبور", desc: "جنة استوائية — غابات مطيرة وأبراج بتروناس وشواطئ خلابة", gradient: "from-green-900 via-emerald-700 to-teal-500", icon: "🌴", tag: "سياحة طبيعية" },
-  { name: "باريس", country: "فرنسا", desc: "مدينة النور — برج إيفل والمتاحف والأزياء الراقية", gradient: "from-purple-900 via-purple-700 to-pink-500", icon: "🗼", tag: "رومانسية" },
-  { name: "المالديف", country: "المحيط الهندي", desc: "الجنة على الأرض — شعاب مرجانية وفيلات فوق الماء وهدوء مطلق", gradient: "from-teal-900 via-teal-600 to-cyan-400", icon: "🏝️", tag: "شهر عسل" },
-  { name: "لندن", country: "المملكة المتحدة", desc: "عاصمة التاريخ والتنوع — متاحف عالمية وأسواق فريدة وحدائق ملكية", gradient: "from-slate-800 via-slate-600 to-blue-500", icon: "🎡", tag: "ثقافة وتسوق" },
-  { name: "بانكوك", country: "تايلاند", desc: "المدينة الذهبية — معابد رائعة وأسواق عائمة ومطبخ لا مثيل له", gradient: "from-orange-900 via-orange-700 to-yellow-500", icon: "🛕", tag: "مغامرة" },
+  { name: "دبي", country: "الإمارات", desc: "مدينة المستقبل — ناطحات السحاب والشواطئ والتسوق الفاخر", gradient: "from-blue-900 via-blue-700 to-cyan-500", tag: "الأكثر طلباً", image: "/دبي.jpeg" },
+  { name: "مكة المكرمة", country: "السعودية", desc: "أقدس البقاع — رحلة إيمانية لا تُنسى إلى بيت الله الحرام", gradient: "from-amber-900 via-yellow-700 to-amber-500", tag: "عمرة وحج", image: "/مكة.jpeg" },
+  { name: "إسطنبول", country: "تركيا", desc: "حيث يلتقي الشرق والغرب — التاريخ والثقافة والمطبخ الفريد", gradient: "from-red-900 via-red-700 to-orange-500", tag: "رحلات عائلية", image: "/اسطنبول.jpeg" },
+  { name: "ماليزيا", country: "كوالالمبور", desc: "جنة استوائية — غابات مطيرة وأبراج بتروناس وشواطئ خلابة", gradient: "from-green-900 via-emerald-700 to-teal-500", tag: "سياحة طبيعية", image: "/ماليزيا.jpeg" },
+  { name: "باريس", country: "فرنسا", desc: "مدينة النور — برج إيفل والمتاحف والأزياء الراقية", gradient: "from-purple-900 via-purple-700 to-pink-500", tag: "رومانسية", image: "/باريس.jpeg" },
+  { name: "المالديف", country: "المحيط الهندي", desc: "الجنة على الأرض — شعاب مرجانية وفيلات فوق الماء وهدوء مطلق", gradient: "from-teal-900 via-teal-600 to-cyan-400", tag: "شهر عسل", image: "/المالديف.jpeg" },
+  { name: "لندن", country: "المملكة المتحدة", desc: "عاصمة التاريخ والتنوع — متاحف عالمية وأسواق فريدة وحدائق ملكية", gradient: "from-slate-800 via-slate-600 to-blue-500", tag: "ثقافة وتسوق", image: "/لندن.jpeg" },
+  { name: "بانكوك", country: "تايلاند", desc: "المدينة الذهبية — معابد رائعة وأسواق عائمة ومطبخ لا مثيل له", gradient: "from-orange-900 via-orange-700 to-yellow-500", tag: "مغامرة", image: "/بانكوك.jpeg" },
 ];
 
 export default function DestinationsSection() {
@@ -56,11 +56,22 @@ export default function DestinationsSection() {
             <div className="flex gap-5 touch-pan-y">
               {destinations.map((dest) => (
                 <div key={dest.name} className="flex-none w-72 md:w-80">
-                  <div className={`relative h-96 rounded-2xl bg-gradient-to-b ${dest.gradient} overflow-hidden group cursor-pointer shadow-xl`}>
-                    <div className="absolute inset-0 opacity-10">
-                      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.3)_0%,_transparent_60%)]" />
-                    </div>
-                    <div className="absolute top-6 right-6 text-5xl filter drop-shadow-lg">{dest.icon}</div>
+                  <div className={`relative h-96 rounded-2xl ${dest.image ? "bg-surface-container-high" : `bg-gradient-to-b ${dest.gradient}`} overflow-hidden group cursor-pointer shadow-xl`}>
+                    {dest.image ? (
+                      <>
+                        <img
+                          src={dest.image}
+                          alt={dest.name}
+                          loading="lazy"
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-black/25" />
+                      </>
+                    ) : (
+                      <div className="absolute inset-0 opacity-10">
+                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.3)_0%,_transparent_60%)]" />
+                      </div>
+                    )}
                     <div className="absolute top-6 left-6">
                       <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full border border-white/30">{dest.tag}</span>
                     </div>

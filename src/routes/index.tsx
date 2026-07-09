@@ -15,7 +15,7 @@ import { useScrollReveal, useScrollRevealChildren } from "../hooks/use-scroll-re
 export const Route = createFileRoute("/")({ component: Index });
 
 /* ─── Data ─── */
-const ABOUT_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuD3AGgRzA8IAMSYKHm4pjlx78k44gUemS-peJXJcBfG48afdTZhk_VlALo2L-RHoSKZkguYTJNv7ZPuV3VqnHZAUjXYhJA7MBKe9fVhrDzO63qkGF-YMZwcLz888EiZet1zlOdlG66N1Vyd4rG8W5rIfP54psvjC9mP6LKVFu4BVMVFHhtBWbnkIH4GuhIg9aI1oWpgVgIq6-BVbv_-X2lz8ZacG8BPb3a_h267PGU3XthoRqJqEBLBOTZtEF5DNCpJQhzN2P8lB8M";
+const ABOUT_IMG = "/%D9%85%D9%86%20%D9%86%D8%AD%D9%86.jpeg";
 
 const services = [
   { icon: Plane,     title: "حجوزات الطيران",      desc: "تأمين أفضل الأسعار على الرحلات الدولية والمحلية مع كبرى شركات الطيران العالمية." },
