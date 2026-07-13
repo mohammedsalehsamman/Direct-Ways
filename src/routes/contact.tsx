@@ -15,15 +15,6 @@ const offices = [
     gradient: "from-blue-700 to-cyan-600",
     flag: "🇦🇪",
   },
-  {
-    city: "الرياض، المملكة العربية السعودية",
-    addr: "حي العليا، طريق الملك فهد، مركز العليا التجاري",
-    hours: "الأحد – الخميس: ٩ص – ٦م",
-    phone: "+966 55 000 0000",
-    mapsUrl: "https://maps.google.com/?q=Olaya+District+Riyadh",
-    gradient: "from-green-700 to-emerald-600",
-    flag: "🇸🇦",
-  },
 ];
 
 const contactLinks = [

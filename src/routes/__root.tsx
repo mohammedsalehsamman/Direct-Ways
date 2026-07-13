@@ -75,7 +75,7 @@ const travelAgencySchema = JSON.stringify({
   "@type": "TravelAgency",
   name: "دايركت وايز للسفر والسياحة",
   alternateName: "Direct Ways Travel & Tourism",
-  url: "https://directwaystravel.com",
+  url: "https://directways.ae",
   telephone: "+971507046772",
   email: "info@directwaystravel.com",
   address: [
@@ -85,18 +85,12 @@ const travelAgencySchema = JSON.stringify({
       addressCountry: "AE",
       streetAddress: "شارع الشيخ زايد، برج المدينة، المكتب 402",
     },
-    {
-      "@type": "PostalAddress",
-      addressLocality: "الرياض",
-      addressCountry: "SA",
-      streetAddress: "حي العليا، طريق الملك فهد، مركز العليا التجاري",
-    },
   ],
   sameAs: [
     "https://www.instagram.com/directwaystravel",
     "https://t.me/directwaystravel",
   ],
-  description: "دايركت وايز للسفر: حجوزات طيران، فنادق، عمرة، تأشيرات ورحلات سياحية فاخرة من الإمارات والسعودية.",
+  description: "دايركت وايز للسفر: حجوزات طيران، فنادق، عمرة، تأشيرات ورحلات سياحية فاخرة من الإمارات.",
   foundingDate: "2009",
   areaServed: ["AE", "SA"],
 });
@@ -107,7 +101,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "دايركت وايز للسفر — رحلات فاخرة وخدمات سياحية متكاملة" },
-      { name: "description", content: "دايركت وايز للسفر: حجوزات طيران، فنادق، عمرة، تأشيرات ورحلات سياحية فاخرة من الإمارات والسعودية." },
+      { name: "description", content: "دايركت وايز للسفر: حجوزات طيران، فنادق، عمرة، تأشيرات ورحلات سياحية فاخرة من الإمارات." },
       { name: "author", content: "Direct Ways Travel" },
       { property: "og:title", content: "دايركت وايز للسفر" },
       { property: "og:description", content: "رحلاتك الفاخرة تبدأ معنا — خبرة أكثر من 15 عاماً في السفر والسياحة." },
